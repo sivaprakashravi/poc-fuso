@@ -1,0 +1,48 @@
+<div class="cb" [ngClass]="{'ncb': !showChat}">
+    <img src="../../../assets/images/mitsubishi.svg" alt="">
+    <div class="msg" *ngIf="showChat">
+        <div class="info">
+            <span>Bot</span>
+            <span>{{time | date: 'hh:mm a'}}</span>
+        </div>
+        <div class="profile-img">
+            <i class="icofont-robot"></i>
+        </div>
+        <label>Welcome User! <br>Select one of the below Options</label>
+    </div>
+    <ul class="navs">
+        <li *ngFor="let nav of navigations" (click)="showChat = true" [attr.title]="nav.label" [ngClass]="{'icon-only': !showChat}"><i [ngClass]="'icofont-'+nav.icon"></i> <label *ngIf="showChat">{{nav.label}}</label></li>
+    </ul>
+    <div class="chat-box" *ngIf="showChat">
+        <div class="messages">
+        <!-- <ngx-simplebar [options]="options"> -->
+            <div class="msg">
+                <div class="info">
+                    <span>User</span>
+                    <span>{{time | date: 'hh:mm a'}}</span>
+                </div>
+                <div class="profile-img">
+                    <i class="icofont-user-alt-4"></i>
+                </div>
+                <label>Welcome User! <br>Select one of the below Options</label>
+            </div>
+            <div class="msg">
+                <div class="info">
+                    <span>Bot</span>
+                    <span>{{time | date: 'hh:mm a'}}</span>
+                </div>
+                <div class="profile-img">
+                    <i class="icofont-robot"></i>
+                </div>
+                <label>Welcome User! <br>Select one of the below Options</label>
+            </div>
+        <!-- </ngx-simplebar> -->
+        </div>
+    </div>
+    <div class="chat-input" *ngIf="showChat">
+        <i class="icofont-business-man"></i>
+        <input type="text">
+        <i class="icofont-send-mail"></i>
+    </div>
+    <i [ngClass]="showChat ? 'icofont-scroll-left' : 'icofont-scroll-right'" (click)="toggle()"></i>
+</div>

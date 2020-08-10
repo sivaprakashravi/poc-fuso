@@ -1,0 +1,26 @@
+[
+ {
+   "ETDStatus": "Open With FI Team",
+   "Count": 4
+ },
+ {
+   "ETDStatus": "Open With SM Team",
+   "Count": 2
+ },
+ {
+   "ETDStatus": "Open With Sales Team",
+   "Count": 6
+ },
+ {
+   "ETDStatus": "Open With OM Team",
+   "Count": 5
+ },
+ {
+   "ETDStatus": "CLOSED",
+   "Count": 20
+ },
+ {
+   "ETDStatus": "ESCALATED",
+   "Count": 1
+ }
+]

@@ -1,0 +1,74 @@
+[
+ {
+   "OrderNumber": 101047001,
+   "OrderDate": "1/5/2020",
+   "CustomerNumber": "A000DW13",
+   "OrderStatus": "H1",
+   "OrderStatusDescription": "Issue in Order items",
+   "StatusRepresentation": "R"
+ },
+ {
+   "OrderNumber": 101047002,
+   "OrderDate": "4/6/2020",
+   "CustomerNumber": "A000DW13",
+   "OrderStatus": "H1",
+   "OrderStatusDescription": "Issue in Order items",
+   "StatusRepresentation": "R"
+ },
+ {
+   "OrderNumber": 101047003,
+   "OrderDate": "6/17/2020",
+   "CustomerNumber": "A000DW13",
+   "OrderStatus": "H1",
+   "OrderStatusDescription": "Issue in Order items",
+   "StatusRepresentation": "R"
+ },
+ {
+   "OrderNumber": 101047004,
+   "OrderDate": "7/7/2020",
+   "CustomerNumber": "A000DW13",
+   "OrderStatus": "H1",
+   "OrderStatusDescription": "Issue in Order items",
+   "StatusRepresentation": "R"
+ },
+ {
+   "OrderNumber": 101047005,
+   "OrderDate": "7/8/2020",
+   "CustomerNumber": "A000DW13",
+   "OrderStatus": "H0",
+   "OrderStatusDescription": "Fully delivered",
+   "StatusRepresentation": "G"
+ },
+ {
+   "OrderNumber": 101047006,
+   "OrderDate": "6/7/2020",
+   "CustomerNumber": "A000DW13",
+   "OrderStatus": "H2",
+   "OrderStatusDescription": "Order Blocked",
+   "StatusRepresentation": "R"
+ },
+ {
+   "OrderNumber": 101047007,
+   "OrderDate": "6/7/2020",
+   "CustomerNumber": "A000DW13",
+   "OrderStatus": "H2",
+   "OrderStatusDescription": "Order Blocked",
+   "StatusRepresentation": "R"
+ },
+ {
+   "OrderNumber": 101047008,
+   "OrderDate": "6/7/2020",
+   "CustomerNumber": "A000DW13",
+   "OrderStatus": "H1",
+   "OrderStatusDescription": "Issue in Order items",
+   "StatusRepresentation": "R"
+ },
+ {
+   "OrderNumber": 101047009,
+   "OrderDate": "8/1/2020",
+   "CustomerNumber": "A000DW13",
+   "OrderStatus": "H1",
+   "OrderStatusDescription": "Issue in Order items",
+   "StatusRepresentation": "R"
+ }
+]

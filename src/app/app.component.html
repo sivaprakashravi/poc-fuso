@@ -1,0 +1,8 @@
+<div class="main">
+  <div class="nav">
+    <app-connect-box (toggled)="toggle($event)"></app-connect-box>
+  </div>
+  <div class="outlet" [ngClass]="{'minimized': minimized}">
+    <router-outlet></router-outlet>
+  </div>
+</div>

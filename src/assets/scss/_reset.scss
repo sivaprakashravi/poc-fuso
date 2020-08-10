@@ -1,0 +1,188 @@
+/**
+ * @author [SBA5COB] Sivaprakasharavi Baskaran
+ * @email [Sivaprakasharavi.Baskaran@in.bosch.com]
+ * @create date 2019-02-12 09:32:43
+ * @modify date 2019-02-14 19:37:57
+ * @desc [description]
+ */
+@import "variables";
+html,
+body,
+ul,
+ol,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+  min-width: 1024px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Rubik', sans-serif;
+  outline: none;
+}
+
+::-ms-clear {
+  display: none;
+}
+
+:read-only {
+  outline: none;
+}
+
+.clear {
+  clear: both;
+}
+
+i {
+  &.enabled {
+    color: $active;
+    cursor: pointer;
+    font-weight: 600;
+  }
+}
+
+.form-error {
+  float: left;
+  color: $error;
+  font-size: 12px;
+  padding: 2px 0px;
+  span {
+    display: block;
+  }
+}
+
+.white-bg {
+  background: $white !important;
+  padding: 0 !important;
+}
+
+.preview {
+  background: rgba(0, 142, 207, 0.1);
+  padding: 5px;
+  color: rgb(0, 142, 207);
+  i {
+    float: right;
+    color: $active;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+}
+
+.no-data {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100px;
+  i {
+    font-size: 50px;
+    display: block;
+  }
+  label {
+    margin-top: 10px;
+    display: block;
+  }
+}
+.no-print {
+  display: block;
+}
+.print {
+  display: none;
+}
+
+.overflow-container {
+  position: relative;
+  .disabled {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    height: calc(100% - 30px) !important;
+    width: calc(100% - 30px);
+    background: rgba(255,255,255,0.4) !important;
+  }
+}
+
+.cdk-overlay-container {
+  z-index: 100000;
+}
+
+
+.pac-card {
+  margin: 10px 10px 0 0;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  font-family: Roboto;
+}
+
+.pac-container {
+  visibility: visible;
+  z-index: 9999;
+}
+
+.pac-controls {
+  display: inline-block;
+  padding: 5px 11px;
+}
+
+.pac-controls label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.pac-logo:after {
+  display: none;
+}
+
+.address-box {
+  color: #000;
+  padding-right: 28px;
+  i {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 6px;
+    background: $border;
+    border-radius: 50%;
+    font-size: 14px;
+    color: $active;
+    cursor: pointer;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+  .print {
+    display: block;
+  }
+  button,
+  i[class^="boschicon"] {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  html, body {    
+    min-width: 100%;
+  }
+}
