@@ -89,11 +89,112 @@
   padding: 15px 15px 15px 0;
   width: calc(100% - 15px);
   .order-details {
-    position: absolute;
     font-size: 16px;
   }
   #timeline {
     max-width: 100%;
     height: 500px;
+  }
+  h4 {
+    background: #a66dd4;
+    display: inline-block;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: $white;
+    font-weight: normal;
+    margin-top: 10px;
+    border: 0.5px solid $white;
+  }
+  .flow {
+    padding: 10px;
+    margin-left: 45px;
+    border-left: 3px solid #a66dd4;
+    position: relative;
+    > div {
+      > div {
+        display: inline-block;
+        padding: 8px;
+        background: #5d3fc5;
+        border-radius: 5px;
+        position: relative;
+        margin-left: 15px;
+        font-size: 14px;
+        color: $white;
+        &::after {
+          content: "";
+          position: absolute;
+          height: 2.5px;
+          width: 25px;
+          background: #a66dd4;
+          left: -25px;
+          top: 13px;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          left: -30px;
+          background: #a66dd4;
+          height: 8px;
+          width: 8px;
+          border: 0.5px solid $white;
+          top: 10px;
+        }
+      }
+      ul {
+        margin-left: 15px;
+        padding: 10px 0;
+        li {
+          display: inline-block;
+          width: 220px;
+          margin-right: 15px;
+          background: $white;
+          padding: 10px;
+          border-radius: 3px;
+          font-size: 14px;
+          border: 0.5px solid #efefef;
+          box-shadow: 0 6px 8px -8px black;
+          label {
+            color: $active;
+          }
+          &.Y {
+            border-left: 2px solid rgb(199, 199, 81);
+          }
+          &.R {
+            border-left: 2px solid rgb(255, 78, 78);
+          }
+          &.G {
+            border-left: 2px solid rgb(24, 146, 24);
+          }
+          .lt {
+            padding: 8px 0;
+          }
+          .btn {
+            text-align: right;
+            button {
+              border: none;
+              font-size: 12px;
+              padding: 4px;
+              border-radius: 2px;
+            }
+          }
+        }
+      }
+    }
+    .dot {
+      position: absolute;
+      bottom: 0;
+      height: 12px;
+      width: 12px;
+      background: #a66dd4;
+      left: -8px;
+      border-radius: 100%;
+      border: 1px solid $white;
+      position: absolute;
+      bottom: 0;
+      height: 12px;
+      width: 12px;
+      background: #a66dd4;
+    }
   }
 }

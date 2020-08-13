@@ -26,5 +26,23 @@
         <div>Order Number: {{OrderNumber}}</div>
         <div>Item Number: {{ItemNumber}}</div>
     </div>
-    <div id="timeline"></div>
+    <div *ngIf="flowView">
+        <h4>Order Status</h4>
+        <div class="flow">
+            <div class="dot"></div>
+            <div *ngFor="let flow of flowView">
+                <div>{{flow.label}}</div>
+                <ul>
+                    <li *ngFor="let l of flow.list" [ngClass]="l['Status Representation']">
+                        <div>
+                            <label>{{l['Order Status Description']}}</label>
+                            <div class="lt">Loss Type: </div>
+                            <div class="btn"><button>ETD Ticket</button></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- <div id="timeline"></div> -->
 </div>

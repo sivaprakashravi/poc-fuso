@@ -1,5 +1,5 @@
 <div class="cb" [ngClass]="{'ncb': !showChat}">
-    <img src="../../../assets/images/fuso_logo.png" alt="">
+    <img src="../../../assets/images/fuso_logo.png" width="48px" alt="">
     <div class="msg" *ngIf="showChat">
         <div class="info">
             <span>Bot</span>
@@ -8,17 +8,17 @@
         <div class="profile-img">
             <i class="icofont-robot"></i>
         </div>
-        <label>Welcome User! <br>Select one of the below Options</label>
+        <label>Welcome Santhosh! <br>I am here to help you!  Select one of the options below</label>
     </div>
     <ul class="navs">
-        <li *ngFor="let nav of navigations" (click)="navigate(nav)" [attr.title]="nav.label" [ngClass]="{'icon-only': !showChat, 'active': activeRoute === '/'+nav.route}"><i [ngClass]="'icofont-'+nav.icon"></i> <label *ngIf="showChat">{{nav.label}}</label></li>
+        <li *ngFor="let nav of navigations" (click)="navigate(nav)" [attr.title]="nav.label" [ngClass]="{'icon-only': !showChat, 'active': activeRoute === nav.route}"><i [ngClass]="'icofont-'+nav.icon"></i> <label *ngIf="showChat">{{nav.label}}</label></li>
     </ul>
     <div class="chat-box" *ngIf="showChat">
         <!-- <div class="messages"> -->
         <ngx-simplebar #scrollMe [options]="options">
             <div [ngClass]="msg.type ? 'msg right': 'msg'" *ngFor="let msg of conversation">
                 <div class="info">
-                    <span [innerHTML]="msg.type ? 'User': 'Bot'"></span>
+                    <span [innerHTML]="msg.type ? 'Santhosh': 'Bot'"></span>
                     <span>{{msg.timestamp | date: 'hh:mm a'}}</span>
                 </div>
                 <div class="profile-img">

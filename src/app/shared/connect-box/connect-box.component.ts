@@ -51,7 +51,7 @@ export class ConnectBoxComponent implements OnInit {
   @Output() toggled = new EventEmitter();
   constructor(private router: Router, private http: HttpClient) {
     router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
-      this.activeRoute = event.url;
+      this.activeRoute = event.url.split('/')[1];
     });
   }
 
@@ -73,7 +73,7 @@ export class ConnectBoxComponent implements OnInit {
   }
 
   navigate(nav) {
-    this.showChat = true;
+    // this.showChat = true;
     if (nav && nav.route) {
       if (nav.route === 'order-status') {
         this.conversation.push({
@@ -90,6 +90,7 @@ export class ConnectBoxComponent implements OnInit {
     const self = this;
     const keyword = self.userSearch;
     self.userSearch = '';
+    const scroller: any = this.myScrollContainer;
     if (keyword) {
       this.placeholder = 'Bot is Typing...';
       self.conversation.push({
@@ -97,6 +98,7 @@ export class ConnectBoxComponent implements OnInit {
         timestamp: new Date(),
         message: keyword
       });
+      self.scroll();
       window.setTimeout(() => {
         const num: Array<string> = keyword.match(/\d+/g);
         if (num && num.length) {
@@ -108,7 +110,7 @@ export class ConnectBoxComponent implements OnInit {
           });
           if (filtered && filtered.length) {
             if (num.length > 1) {
-              const itemStatus = _.filter(self.itemStatus, {'Order Number': Number(num[0]), 'Item Number': Number(num[1])});
+              const itemStatus = _.filter(self.itemStatus, { 'Order Number': Number(num[0]), 'Item Number': Number(num[1]) });
               const txtI = itemStatus.find(i => i.Position === 'SO');
               const ref = self.text.find(t => t['Text ID'] === txtI.TEXT_REF).Text;
               self.conversation.push({
@@ -131,9 +133,8 @@ export class ConnectBoxComponent implements OnInit {
           });
         }
         self.placeholder = '';
+        self.scroll();
       }, 2000);
-      const scroller: any = this.myScrollContainer;
-      scroller.SimpleBar.getScrollElement().scrollTop = scroller.SimpleBar.getScrollElement().scrollHeight + 1000;
     }
   }
 
@@ -159,6 +160,14 @@ export class ConnectBoxComponent implements OnInit {
       timestamp: new Date(),
       message: 'No Matching item found for the search.'
     });
+    self.scroll();
+  }
+
+  scroll() {
+    const scroller: any = this.myScrollContainer;
+    window.setTimeout(() => {
+      scroller.SimpleBar.getScrollElement().scrollTop = scroller.SimpleBar.getScrollElement().scrollHeight + 100;
+    }, 10);
   }
 
 }

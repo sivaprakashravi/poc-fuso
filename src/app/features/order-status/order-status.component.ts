@@ -50,6 +50,7 @@ export class OrderStatusComponent implements OnInit {
   ItemNumber;
   filterName;
   itemStatus;
+  flowView;
   constructor(private http: HttpClient, private router: Router, private actRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -102,12 +103,31 @@ export class OrderStatusComponent implements OnInit {
         self.http.get('./../assets/json/StatusDetails.json').subscribe((x: Array<any>) => {
           self.itemStatus = x;
           const itemStatus = _.filter(self.itemStatus, { 'Order Number': Number(OrderNumber), 'Item Number': Number(ItemNumber) });
-          am4core.ready(() => {
-            window.setTimeout(() => {
-              const filteredList = _.filter(self.orderList, { OrderNumber: Number(OrderNumber), ItemNumber: Number(ItemNumber) });
-              self.orderFlow(self, itemStatus);
-            }, 500);
-          });
+          const grouped = _.groupBy(itemStatus, 'Position');
+          self.flowView = [];
+          for (const g in grouped) {
+            if (grouped[g]) {
+              let name;
+              if (g === 'SO') {
+                name = 'Order';
+              }
+              if (g === 'SH') {
+                name = 'Shipment';
+              }
+              if (g === 'DL') {
+                name = 'Delivery';
+              }
+              self.flowView.push({
+                label: name,
+                list: grouped[g]
+              });
+            }
+          }
+          // am4core.ready(() => {
+          //   window.setTimeout(() => {
+          //     self.orderFlow(self, itemStatus);
+          //   }, 500);
+          // });
         });
       }
       if (query) {
@@ -166,7 +186,6 @@ export class OrderStatusComponent implements OnInit {
     series.tooltipText = '{categoryX}: [bold]{valueY}[/]';
     series.columns.template.fillOpacity = .8;
     series.columns.template.events.on('hit', (ev) => {
-      console.log('clicked on ', ev.target);
       self.filterTable(ev.target.dataItem.categoryX);
     }, this);
 
@@ -182,6 +201,10 @@ export class OrderStatusComponent implements OnInit {
     columnTemplate.adapter.add('stroke', (stroke, target) => {
       return chart.colors.getIndex(target.dataItem.index);
     });
+
+    columnTemplate.width = am4core.percent(100);
+    categoryAxis.renderer.cellStartLocation = 0.2;
+    categoryAxis.renderer.cellEndLocation = 0.8;
 
     chart.cursor = new am4charts.XYCursor();
     chart.cursor.lineX.strokeOpacity = 0;
