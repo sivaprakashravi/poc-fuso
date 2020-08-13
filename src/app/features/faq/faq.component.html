@@ -1,1 +1,14 @@
-<p>faq works!</p>
+<h1>FAQ's</h1>
+<div class="faq">
+    <ul>
+        <li *ngFor="let section of qa" (click)="section.active = !section.active">
+            <label><i [ngClass]="'icofont-dotted-'+ (!section.active ? 'down' : 'up')"></i>{{section.topic}}</label>
+            <div class="subs" *ngIf="section.active">
+                <div *ngFor="let item of section.subs">
+                    <div class="topic">{{item.q}}</div>
+                    <div class="para" [innerHTML]="item.a"></div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
