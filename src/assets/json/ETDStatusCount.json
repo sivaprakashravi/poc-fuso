@@ -1,26 +1,32 @@
 [
  {
-   "ETDStatus": "Open With FI Team",
-   "Count": 4
+   "category": "Open With FI Team",
+   "value": 4,
+   "full": 100
  },
  {
-   "ETDStatus": "Open With SM Team",
-   "Count": 2
+   "category": "Open With SM Team",
+   "value": 2,
+   "full": 100
  },
  {
-   "ETDStatus": "Open With Sales Team",
-   "Count": 6
+   "category": "Open With Sales Team",
+   "value": 6,
+   "full": 100
  },
  {
-   "ETDStatus": "Open With OM Team",
-   "Count": 5
+   "category": "Open With OM Team",
+   "value": 5,
+   "full": 100
  },
  {
-   "ETDStatus": "CLOSED",
-   "Count": 20
+   "category": "CLOSED",
+   "value": 20,
+   "full": 100
  },
  {
-   "ETDStatus": "ESCALATED",
-   "Count": 1
+   "category": "ESCALATED",
+   "value": 1,
+   "full": 100
  }
 ]

@@ -39,9 +39,15 @@
       margin-bottom: 1px;
       width: calc(50% - 40px);
       cursor: pointer;
+      &:first-child {
+        width: calc(100% - 60px);
+      }
       &:hover {
-        background: rgba(255, 255, 255, 0.4);
+        background: #03a9f4;
         cursor: pointer;
+      }
+      &.active {
+        background: #a66dd4;
       }
       i {
         font-size: 18px;
@@ -69,12 +75,12 @@
   }
   .chat-box {
     display: block;
-    height: calc(100% - 240px);
+    height: calc(100% - 300px);
     position: relative;
     width: calc(100% - 45px);
     overflow-y: auto;
     .msg {
-      width: calc(100% - 50px);
+      width: calc(100% - 70px);
     }
     ngx-simplebar {
       width: 100%;
@@ -124,22 +130,23 @@
       width: calc(100% - 10px);
     }
   }
-  .messages {
+  .messages, ngx-simplebar {
     position: absolute;
     width: 100%;
     bottom: 0;
     .msg {
-      &:nth-child(even) {
+      &.right {
         padding-left: 0;
         padding-right: 30px;
         float: right;
-        margin-right: 0;
+        margin-right: 15px;
         .profile-img {
           float: right;
           margin-right: -25px;
         }
         label {
-          margin-left: 5px;
+          margin-right: 5px;
+          text-align: right;
         }
         .info {
           margin-right: -25px;

@@ -1,1 +1,33 @@
-<p>dashboard works!</p>
+<h1>Dashboard</h1>
+<div class="dashboard">
+    <h2>Order Status</h2>
+    <div>
+        <div class="tiles">
+            <ul>
+                <li (click)="filter(order)" *ngFor="let order of orders" [ngClass]="{'active': order.active}">
+                    <div class="name">{{order.Status}}</div>
+                    <div class="value">{{order.Count}}</div>
+                </li>
+            </ul>
+        </div>
+        <div class="table">
+            <h2>Recent Orders <span *ngIf="activeOrder">: {{activeOrder}}</span></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th *ngFor="let header of tableHeaders" [attr.width]="header.label === 'Description' ? '200px': ''">{{header.label}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of tableData" (click)="gotoOrder(data)">
+                        <td *ngFor="let header of tableHeaders">{{data[header.key]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="graphic">
+            <h2>ETD Ticket Status</h2>
+            <div id="graphic"></div>
+        </div>
+    </div>
+</div>

@@ -1,38 +1,38 @@
 [
- {
-   "Status": "Back Order (BO)",
-   "Count": 7
- },
- {
-   "Status": "Cancelled",
-   "Count": 8
- },
- {
-   "Status": "Credit block",
-   "Count": 13
- },
- {
-   "Status": "Delivery Block",
-   "Count": 14
- },
- {
-   "Status": "Packed",
-   "Count": 20
- },
- {
-   "Status": "Pending  for GD Release",
-   "Count": 5
- },
- {
-   "Status": "Shipped ",
-   "Count": 21
- },
- {
-   "Status": "Spike Order",
-   "Count": 7
- },
- {
-   "Status": "Unpacked",
-   "Count": 4
- }
+  {
+    "Status": "Back Order (BO)",
+    "Count": 7
+  },
+  {
+    "Status": "Cancelled",
+    "Count": 8
+  },
+  {
+    "Status": "Credit block",
+    "Count": 13
+  },
+  {
+    "Status": "Delivery Block",
+    "Count": 14
+  },
+  {
+    "Status": "Packed",
+    "Count": 20
+  },
+  {
+    "Status": "Pending  for GD Release",
+    "Count": 5
+  },
+  {
+    "Status": "Shipped ",
+    "Count": 21
+  },
+  {
+    "Status": "Spike Order",
+    "Count": 7
+  },
+  {
+    "Status": "Unpacked",
+    "Count": 4
+  }
 ]

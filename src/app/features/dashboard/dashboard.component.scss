@@ -1,0 +1,104 @@
+@import "../../../assets/scss/variables";
+.dashboard {
+  padding: 15px 15px 15px 0;
+  width: calc(100% - 15px);
+  h2 {
+    font-size: 22px;
+    font-weight: normal;
+  }
+  .tiles {
+    margin-top: 15px;
+    ul {
+      display: flex;
+      li {
+        display: block;
+        width: calc(25% - 30px);
+        padding: 10px;
+        border-radius: 8px;
+        background: $active;
+        color: $white;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        position: relative;
+        cursor: pointer;
+        .name {
+          font-size: 12px;
+          margin-bottom: 12px;
+          height: 30px;
+        }
+        .value {
+          font-size: 36px;
+        }
+        &:nth-child(2n) {
+          background: #03a9f4;
+        }
+        &:nth-child(3n) {
+          background: #a66dd4;
+        }
+        &:nth-child(4n) {
+          background: #5d3fc5;
+        }
+        &.active {
+          ::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            border: 1px solid $white;
+          }
+        }
+      }
+    }
+  }
+  .table {
+    width: calc(100% - 400px);
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 10px;
+    table {
+      margin-top: 10px;
+      width: calc(100% - 15px);
+      font-size: 14px;
+      border: 1px solid $white;
+      th,
+      td {
+        padding: 10px 5px;
+        font-weight: normal;
+        border-collapse: collapse;
+      }
+      thead {
+        tr {
+          background: $white;
+        }
+      }
+      tbody {
+        tr {
+          cursor: pointer;
+          &:nth-child(even) {
+            background: #e8f0ff;
+          }
+          &:hover {
+            background: $active;
+            color: $white;
+          }
+        }
+        td {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .graphic {
+    width: 400px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 10px;
+    #graphic {
+      width: 400px;
+      height: 400px;
+    }
+  }
+}

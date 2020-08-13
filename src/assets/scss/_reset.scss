@@ -29,7 +29,7 @@ body {
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   outline: none;
 }
 
@@ -44,7 +44,14 @@ body {
 .clear {
   clear: both;
 }
-
+h1 {
+  font-size: 22px;
+  font-weight: normal;
+  color: $active;
+  margin: 10px 10px 0 0;
+  position: relative;
+  z-index: 1;
+}
 i {
   &.enabled {
     color: $active;
@@ -112,14 +119,13 @@ i {
     left: 0;
     height: calc(100% - 30px) !important;
     width: calc(100% - 30px);
-    background: rgba(255,255,255,0.4) !important;
+    background: rgba(255, 255, 255, 0.4) !important;
   }
 }
 
 .cdk-overlay-container {
   z-index: 100000;
 }
-
 
 .pac-card {
   margin: 10px 10px 0 0;
@@ -182,7 +188,8 @@ i {
 }
 
 @media (max-width: 1024px) {
-  html, body {    
+  html,
+  body {
     min-width: 100%;
   }
 }

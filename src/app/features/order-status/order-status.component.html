@@ -1,16 +1,11 @@
-<div class="order-status">
-    <h2>Order Status</h2>
+<h1>Overview</h1>
+<div *ngIf="(OrderNumber && !ItemNumber) || !(OrderNumber && ItemNumber)" class="order-status">
     <div>
-        <div class="tiles">
-            <ul>
-                <li *ngFor="let order of orders">
-                    <div class="name">{{order.name}}</div>
-                    <div class="value">{{order.value}}</div>
-                </li>
-            </ul>
+        <div class="graphic">
+            <div id="graphic"></div>
         </div>
         <div class="table">
-            <h2>Recent Orders</h2>
+            <h2><span *ngIf="!filterName">Recent Orders</span> <span *ngIf="filterName">{{filterName}}</span></h2>
             <table>
                 <thead>
                     <tr>
@@ -18,15 +13,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let data of tableData">
+                    <tr *ngFor="let data of tableData" (click)="gotoOrder(data)">
                         <td *ngFor="let header of tableHeaders">{{data[header.key]}}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="graphic">
-            <h2>ETD Ticket Status</h2>
-            <div id="graphic"></div>
-        </div>
     </div>
+</div>
+<div *ngIf="OrderNumber && ItemNumber" class="order-view">
+    <div class="order-details">
+        <div>Order Number: {{OrderNumber}}</div>
+        <div>Item Number: {{ItemNumber}}</div>
+    </div>
+    <div id="timeline"></div>
 </div>

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
 import { OrderStatusComponent } from './features/order-status/order-status.component';
+import { FaqComponent } from './features/faq/faq.component';
 
 
 
@@ -19,6 +20,18 @@ const routes: Routes = [
   {
     path: 'order-status',
     component: OrderStatusComponent
+  },
+  {
+    path: 'order-status/:orderNumber',
+    component: OrderStatusComponent
+  },
+  {
+    path: 'order-status/:orderNumber/:itemNumber',
+    component: OrderStatusComponent
+  },
+  {
+    path: 'faq',
+    component: FaqComponent
   },
   {
     path: '**',
