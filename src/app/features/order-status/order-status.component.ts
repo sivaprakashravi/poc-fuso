@@ -49,6 +49,7 @@ export class OrderStatusComponent implements OnInit {
   OrderNumber;
   ItemNumber;
   filterName;
+  itemStatus;
   constructor(private http: HttpClient, private router: Router, private actRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -82,14 +83,6 @@ export class OrderStatusComponent implements OnInit {
       self.orderList = j;
       self.tableData = self.orderList.filter((o, i) => i < 10);
       // conditions
-      if (OrderNumber && ItemNumber) {
-        am4core.ready(() => {
-          window.setTimeout(() => {
-            const filteredList = _.filter(self.orderList, { OrderNumber: Number(OrderNumber), ItemNumber: Number(ItemNumber) });
-            self.orderFlow(self);
-          }, 500);
-        });
-      }
       if (OrderNumber && !ItemNumber) {
         const filteredList = _.filter(self.orderList, { OrderNumber: Number(OrderNumber) });
         const filteredGroup = _.groupBy(filteredList, 'OrderStatusDescription');
@@ -104,6 +97,18 @@ export class OrderStatusComponent implements OnInit {
         }
         self.createBar();
         self.tableData = filteredList.filter((o, i) => i < 10);
+      }
+      if (OrderNumber && ItemNumber) {
+        self.http.get('./../assets/json/StatusDetails.json').subscribe((x: Array<any>) => {
+          self.itemStatus = x;
+          const itemStatus = _.filter(self.itemStatus, { 'Order Number': Number(OrderNumber), 'Item Number': Number(ItemNumber) });
+          am4core.ready(() => {
+            window.setTimeout(() => {
+              const filteredList = _.filter(self.orderList, { OrderNumber: Number(OrderNumber), ItemNumber: Number(ItemNumber) });
+              self.orderFlow(self, itemStatus);
+            }, 500);
+          });
+        });
       }
       if (query) {
         self.filterTable(query);
@@ -188,48 +193,26 @@ export class OrderStatusComponent implements OnInit {
     this.router.navigate(['/order-status', OrderNumber, ItemNumber]);
   }
 
-  orderFlow(self) {
+  orderFlow(self, itemStatus) {
     const chart: any = am4core.create('timeline', timeline.CurveChart);
     chart.curveContainer.padding(100, 20, 50, 20);
     chart.maskBullets = false;
-
-
+    chart.logo.disabled = true;
     const colorSet = new am4core.ColorSet();
 
-    chart.dateFormatter.inputDateFormat = 'yyyy-MM-dd HH:mm';
+    chart.dateFormatter.inputDateFormat = 'YYYY-MM-DD HH:mm';
     chart.dateFormatter.dateFormat = 'HH';
-
-    chart.data = [{
-      category: '',
-      start: '2019-01-10 06:00',
-      end: '2019-01-10 06:15',
-      color: colorSet.getIndex(15),
-      icon: '',
-      text: 'Wake up!'
-    }, {
-      category: '',
-      start: '2019-01-10 06:15',
-      end: '2019-01-10 06:30',
-      color: colorSet.getIndex(14),
-      icon: '',
-      text: 'Drink water'
-    },
-    {
-      category: '',
-      start: '2019-01-10 06:30',
-      end: '2019-01-10 07:00',
-      color: colorSet.getIndex(13),
-      icon: '',
-      text: 'Exercise'
-    },
-    {
-      category: '',
-      start: '2019-01-10 07:00',
-      end: '2019-01-10 07:30',
-      color: colorSet.getIndex(12),
-      icon: '',
-      text: 'Have breakfast'
-    }];
+    chart.data = [];
+    itemStatus.forEach((item, i) => {
+      chart.data.push({
+        category: '',
+        start: moment(new Date()).hours(3 + i).valueOf(),
+        end: moment(new Date()).hours(4 + i).valueOf(),
+        color: colorSet.getIndex(5 + i),
+        icon: '',
+        text: item['Order Status Description']
+      });
+    });
 
     chart.fontSize = 10;
     chart.tooltipContainer.fontSize = 10;
@@ -261,8 +244,8 @@ export class OrderStatusComponent implements OnInit {
     dateAxis.tooltip.label.paddingTop = 7;
     dateAxis.endLocation = 0;
     dateAxis.startLocation = -0.5;
-    dateAxis.min = new Date(2019, 0, 9, 23, 55).getTime();
-    dateAxis.max = new Date(2019, 0, 10, 16, 10).getTime();
+    dateAxis.min = moment(new Date()).hours(1).valueOf();
+    dateAxis.max = moment(new Date()).hours(10).valueOf();
 
     const labelTemplate = dateAxis.renderer.labels.template;
     labelTemplate.verticalCenter = 'top';
@@ -323,16 +306,16 @@ export class OrderStatusComponent implements OnInit {
     textBullet.dy = - 100;
     textBullet.label.textAlign = 'middle';
 
-    chart.scrollbarX = new am4core.Scrollbar();
-    chart.scrollbarX.align = 'center';
-    chart.scrollbarX.width = am4core.percent(75);
-    chart.scrollbarX.parent = chart.curveContainer;
-    chart.scrollbarX.height = 300;
-    chart.scrollbarX.orientation = 'vertical';
-    chart.scrollbarX.x = 128;
-    chart.scrollbarX.y = -140;
-    chart.scrollbarX.isMeasured = false;
-    chart.scrollbarX.opacity = 0.5;
+    // chart.scrollbarX = new am4core.Scrollbar();
+    // chart.scrollbarX.align = 'center';
+    // chart.scrollbarX.width = am4core.percent(75);
+    // chart.scrollbarX.parent = chart.curveContainer;
+    // chart.scrollbarX.height = 300;
+    // chart.scrollbarX.orientation = 'vertical';
+    // chart.scrollbarX.x = 128;
+    // chart.scrollbarX.y = -140;
+    // chart.scrollbarX.isMeasured = false;
+    // chart.scrollbarX.opacity = 0.5;
 
     const cursor = new timeline.CurveCursor();
     chart.cursor = cursor;

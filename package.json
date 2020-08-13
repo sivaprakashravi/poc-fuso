@@ -28,6 +28,7 @@
     "rxjs": "~6.5.4",
     "simplebar-angular": "^2.2.1",
     "tslib": "^1.10.0",
+    "web-animations-js": "^2.3.2",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

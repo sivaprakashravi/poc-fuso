@@ -46,6 +46,8 @@ export class ConnectBoxComponent implements OnInit {
   placeholder = '';
   disabled = false;
   data: Array<any> = [];
+  itemStatus: Array<any> = [];
+  text: Array<any> = [];
   @Output() toggled = new EventEmitter();
   constructor(private router: Router, private http: HttpClient) {
     router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
@@ -56,6 +58,12 @@ export class ConnectBoxComponent implements OnInit {
   ngOnInit(): void {
     this.http.get('./../assets/json/DetailedOrderlist.json').subscribe((j: Array<any>) => {
       this.data = j;
+    });
+    this.http.get('./../assets/json/StatusDetails.json').subscribe((j: Array<any>) => {
+      this.itemStatus = j;
+    });
+    this.http.get('./../assets/json/text.json').subscribe((j: Array<any>) => {
+      this.text = j;
     });
   }
 
@@ -100,6 +108,14 @@ export class ConnectBoxComponent implements OnInit {
           });
           if (filtered && filtered.length) {
             if (num.length > 1) {
+              const itemStatus = _.filter(self.itemStatus, {'Order Number': Number(num[0]), 'Item Number': Number(num[1])});
+              const txtI = itemStatus.find(i => i.Position === 'SO');
+              const ref = self.text.find(t => t['Text ID'] === txtI.TEXT_REF).Text;
+              self.conversation.push({
+                type: 0,
+                timestamp: new Date(),
+                message: ref
+              });
               self.router.navigate(['/order-status', num[0], num[1]]);
             } else {
               self.router.navigate(['/order-status', num[0]]);

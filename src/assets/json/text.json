@@ -1,0 +1,87 @@
+[
+ {
+   "Text ID": "T001",
+   "Text": "Dear customer, Order cannot be found. Check your inout or contact OM team",
+   "Status": "01"
+ },
+ {
+   "Text ID": "T002",
+   "Text": "Dear customer, Your order is cancelled due to \"Localized parts\".Feel free to ask OM team, Order can be released in stock exists in Atsugi",
+   "Status": "A6"
+ },
+ {
+   "Text ID": "T003",
+   "Text": "Dear customer, Please check with OM team about your order . Cancelled with \"MBSU\"",
+   "Status": "A6"
+ },
+ {
+   "Text ID": "T004",
+   "Text": "Dear customer, Order is blocked under \"Credit Block\". Call OM team",
+   "Status": "A1"
+ },
+ {
+   "Text ID": "T005",
+   "Text": "Dear customer, Order is blocked under \"Delivery Block\". Call OM team",
+   "Status": "A2"
+ },
+ {
+   "Text ID": "T006",
+   "Text": "Dear customer, You have reached ordering limit for this item. Order is under spike order.",
+   "Status": "A3"
+ },
+ {
+   "Text ID": "T007",
+   "Text": "Dear customer, Your order is undet Back Order category. Expected delivery date is &1",
+   "Status": "A4"
+ },
+ {
+   "Text ID": "T008",
+   "Text": "Dear customer, Stock exists , Packing problem.",
+   "Status": "A7"
+ },
+ {
+   "Text ID": "T009",
+   "Text": "Dear customer, Your order is packed and waiting for shipment",
+   "Status": "A8"
+ },
+ {
+   "Text ID": "T010",
+   "Text": "Dear customer, Your order is shipped on &1",
+   "Status": "A5"
+ },
+ {
+   "Text ID": "T011",
+   "Text": "Dear customer, Your order is waiting for partner release",
+   "Status": "A9"
+ },
+ {
+   "Text ID": "T012",
+   "Text": "Dear customer, Your order is packed on &1",
+   "Status": "D1"
+ },
+ {
+   "Text ID": "T013",
+   "Text": "Dear customer, Delivery created for your order on &1",
+   "Status": "S1"
+ },
+ {
+   "Text ID": "T014",
+   "Text": "Dear customer, Invalid order. Call OM for status",
+   "Status": "XX"
+ },
+ {
+   "Text ID": "T015",
+   "Text": "Dear customer, You order has some problem due to which delivery is not create. Call OM team",
+   "Status": "ZD"
+ },
+ {
+   "Text ID": "T016",
+   "Text": "Dear customer, Your order will be displatched soon. Please wait for shipment date",
+   "Status": "ZY"
+ },
+ {
+   "Text ID": "T017",
+   "Text": "Dear customer, We are not able to reach this step due to some problem with this order. Please refer to the issue listed under order",
+   "Status": "ZZ"
+ }
+]
