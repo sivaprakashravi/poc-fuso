@@ -12,6 +12,7 @@ import { OrderStatusComponent } from './features/order-status/order-status.compo
 import { FaqComponent } from './features/faq/faq.component';
 import { ConnectBoxComponent } from './shared/connect-box/connect-box.component';
 import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
+import { EtdComponent } from './features/etd/etd.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PageNotFoundComponent } from './features/page-not-found/page-not-found.
     OrderStatusComponent,
     FaqComponent,
     ConnectBoxComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EtdComponent
   ],
   imports: [
     BrowserModule,

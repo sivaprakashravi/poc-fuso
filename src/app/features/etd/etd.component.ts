@@ -1,71 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 
 import * as _ from 'lodash';
-import { Router } from '@angular/router';
 am4core.useTheme(am4themes_animated);
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: 'app-etd',
+  templateUrl: './etd.component.html',
+  styleUrls: ['./etd.component.scss']
 })
-
-export class DashboardComponent implements OnInit {
-  orders = [{
-    name: 'Credit Block',
-    value: '12'
-  }, {
-    name: 'Delivery Block',
-    value: '04'
-  }, {
-    name: 'Spike Order',
-    value: '07'
-  }, {
-    name: 'Back Order (BO)',
-    value: '36'
-  }, {
-    name: 'Cancelled',
-    value: '05'
-  }, {
-    name: 'Unpacked',
-    value: '45'
-  }, {
-    name: 'Packed',
-    value: '78'
-  }, {
-    name: 'Pending  for GD Release',
-    value: '00'
-  }];
-  tableHeaders = [{
-    label: 'Order No',
-    key: 'OrderNumber'
-  }, {
-    label: 'Date',
-    key: 'OrderDate'
-  }, {
-    label: 'Customer No',
-    key: 'CustomerNumber'
-  }, {
-    label: 'Status',
-    key: 'OrderStatusDescription'
-  }];
-  tableData: Array<any> = [];
-  orderList: Array<any> = [];
+export class EtdComponent implements OnInit {
   etdStatus: Array<any> = [];
-  activeOrder = '';
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get('./../assets/json/FirstPageHeadOrderList.json').subscribe((j: Array<any>) => {
-      this.tableData = j;
-    });
-    this.http.get('./../assets/json/StatusTable.json').subscribe((j: Array<any>) => {
-      this.orders = j;
-    });
+
     this.http.get('./../assets/json/ETDStatusCount.json').subscribe((j: Array<any>) => {
       this.etdStatus = j;
       this.createChart();
@@ -132,14 +83,6 @@ export class DashboardComponent implements OnInit {
 
     // Add cursor
     chart.cursor = new am4charts.RadarCursor();
-  }
-
-  filter(order) {
-    this.router.navigate(['order-status'], { queryParams: { s: order.Status } });
-  }
-
-  gotoOrder({ OrderNumber }) {
-    this.router.navigate(['/order-status', OrderNumber]);
   }
 
 }

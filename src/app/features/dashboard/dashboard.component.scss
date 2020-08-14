@@ -102,3 +102,21 @@
     }
   }
 }
+.Y {
+  border-left: 5px solid rgb(238, 240, 133);
+  td:first-child {
+    border-left: 5px solid rgb(238, 240, 133);
+  }
+}
+.R {
+  border-left: 5px solid rgb(255, 78, 78);
+  td:first-child {
+    border-left: 5px solid rgb(255, 78, 78);
+  }
+}
+.G {
+  border-left: 5px solid rgb(24, 146, 24);
+  td:first-child {
+    border-left: 5px solid rgb(24, 146, 24);
+  }
+}

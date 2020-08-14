@@ -26,7 +26,8 @@ export class ConnectBoxComponent implements OnInit {
     route: 'order-status'
   }, {
     label: 'ETD Ticket',
-    icon: 'ticket'
+    icon: 'ticket',
+    route: 'etd-status'
   }, {
     label: 'Claim Status',
     icon: 'package'
@@ -110,9 +111,13 @@ export class ConnectBoxComponent implements OnInit {
           });
           if (filtered && filtered.length) {
             if (num.length > 1) {
-              const itemStatus = _.filter(self.itemStatus, { 'Order Number': Number(num[0]), 'Item Number': Number(num[1]) });
-              const txtI = itemStatus.find(i => i.Position === 'SO');
-              const ref = self.text.find(t => t['Text ID'] === txtI.TEXT_REF).Text;
+              const itemStatus = _.filter(self.itemStatus, (itm) => {
+                return itm['Order Number'] === Number(num[0])
+                  && itm['Item Number'] === Number(num[1])
+                  && itm['Status Representation'] !== 'G';
+              });
+              const txtI = itemStatus && itemStatus.length ? itemStatus[0] : { };
+              const ref = txtI && txtI.TEXT_REF ? self.text.find(t => t['Text ID'] === txtI.TEXT_REF).Text : 'Passed';
               self.conversation.push({
                 type: 0,
                 timestamp: new Date(),

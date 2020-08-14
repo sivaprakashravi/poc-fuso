@@ -40,12 +40,10 @@ export class OrderStatusComponent implements OnInit {
   }, {
     label: 'Desc',
     key: 'OrderStatusDescription'
-  }, {
-    label: 'Status',
-    key: 'StatusRepresentation'
   }];
   tableData: Array<any> = [];
   orderList: Array<any> = [];
+  text: Array<any> = [];
   OrderNumber;
   ItemNumber;
   filterName;
@@ -100,34 +98,41 @@ export class OrderStatusComponent implements OnInit {
         self.tableData = filteredList.filter((o, i) => i < 10);
       }
       if (OrderNumber && ItemNumber) {
-        self.http.get('./../assets/json/StatusDetails.json').subscribe((x: Array<any>) => {
-          self.itemStatus = x;
-          const itemStatus = _.filter(self.itemStatus, { 'Order Number': Number(OrderNumber), 'Item Number': Number(ItemNumber) });
-          const grouped = _.groupBy(itemStatus, 'Position');
-          self.flowView = [];
-          for (const g in grouped) {
-            if (grouped[g]) {
-              let name;
-              if (g === 'SO') {
-                name = 'Order';
+        self.http.get('./../assets/json/text.json').subscribe((t: Array<any>) => {
+          self.text = t;
+          self.http.get('./../assets/json/StatusDetails.json').subscribe((x: Array<any>) => {
+            self.itemStatus = x;
+            const itemStatus = _.filter(self.itemStatus, { 'Order Number': Number(OrderNumber), 'Item Number': Number(ItemNumber) });
+            const grouped = _.groupBy(itemStatus, 'Position');
+            self.flowView = [];
+            for (const g in grouped) {
+              if (grouped[g]) {
+                let name;
+                if (g === 'SO') {
+                  name = 'Order';
+                }
+                if (g === 'SH') {
+                  name = 'Shipment';
+                }
+                if (g === 'DL') {
+                  name = 'Delivery';
+                }
+                grouped[g].forEach(gt => {
+                  const ref = gt.TEXT_REF;
+                  gt.text = self.text.find(e => e['Text ID'] === ref);
+                });
+                self.flowView.push({
+                  label: name,
+                  list: grouped[g]
+                });
               }
-              if (g === 'SH') {
-                name = 'Shipment';
-              }
-              if (g === 'DL') {
-                name = 'Delivery';
-              }
-              self.flowView.push({
-                label: name,
-                list: grouped[g]
-              });
             }
-          }
-          // am4core.ready(() => {
-          //   window.setTimeout(() => {
-          //     self.orderFlow(self, itemStatus);
-          //   }, 500);
-          // });
+            // am4core.ready(() => {
+            //   window.setTimeout(() => {
+            //     self.orderFlow(self, itemStatus);
+            //   }, 500);
+            // });
+          });
         });
       }
       if (query) {

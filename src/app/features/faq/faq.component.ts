@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class FaqComponent implements OnInit {
   qa = [{
     topic: 'Claim',
-    active: true,
+    active: false,
     subs: [{
       q: 'How can I raise a claim?',
       // tslint:disable-next-line:max-line-length

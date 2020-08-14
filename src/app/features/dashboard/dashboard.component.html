@@ -19,7 +19,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let data of tableData" (click)="gotoOrder(data)">
+                    <tr [ngClass]="data.StatusRepresentation" *ngFor="let data of tableData" (click)="gotoOrder(data)">
                         <td *ngFor="let header of tableHeaders">{{data[header.key]}}</td>
                     </tr>
                 </tbody>
