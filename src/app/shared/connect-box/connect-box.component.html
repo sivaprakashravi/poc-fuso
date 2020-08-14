@@ -32,7 +32,31 @@
     <div class="chat-input" *ngIf="showChat">
         <i class="icofont-business-man"></i>
         <input type="text" [(ngModel)]="userSearch" [attr.placeholder]="placeholder" (keyup.enter)="userSearch ? search() : ''">
-        <i class="icofont-send-mail"></i>
+        <i class="icofont-send-mail" (click)="showMail = true"></i>
     </div>
     <i [ngClass]="showChat ? 'icofont-scroll-left' : 'icofont-scroll-right'" (click)="toggle()"></i>
+</div>
+
+<div class="modal" *ngIf="showMail">
+    <div class="modal-body">
+        <h1>Send Enquiry</h1>
+        <ul>
+            <li>
+                <label for="">Recepients</label>
+                <input type="text">
+            </li>
+            <li>
+                <label for="">Subject</label>
+                <input type="text">
+            </li>
+            <li>
+                <label for="">Message</label>
+                <textarea></textarea>
+            </li>
+            <li class="btn">
+                <button (click)="showMail = false" class="secondary">Cancel</button>
+                <button (click)="showMail = false" class="primary">Send</button>
+            </li>
+        </ul>
+    </div>
 </div>

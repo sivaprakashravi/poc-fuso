@@ -49,6 +49,7 @@ export class ConnectBoxComponent implements OnInit {
   data: Array<any> = [];
   itemStatus: Array<any> = [];
   text: Array<any> = [];
+  showMail = false;
   @Output() toggled = new EventEmitter();
   constructor(private router: Router, private http: HttpClient) {
     router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
@@ -116,8 +117,18 @@ export class ConnectBoxComponent implements OnInit {
                   && itm['Item Number'] === Number(num[1])
                   && itm['Status Representation'] !== 'G';
               });
+              const itemStatusOk = _.filter(self.itemStatus, (itm) => {
+                return itm['Order Number'] === Number(num[0])
+                  && itm['Item Number'] === Number(num[1])
+                  && itm['Status Representation'] === 'G';
+              });
               const txtI = itemStatus && itemStatus.length ? itemStatus[0] : { };
-              const ref = txtI && txtI.TEXT_REF ? self.text.find(t => t['Text ID'] === txtI.TEXT_REF).Text : 'Passed';
+              let ref;
+              if (txtI && txtI.TEXT_REF) {
+                ref = self.text.find(t => t['Text ID'] === txtI.TEXT_REF).Text;
+              } else {
+                ref = self.text.find(t => t['Text ID'] === itemStatusOk[itemStatusOk.length - 1].TEXT_REF).Text;
+              }
               self.conversation.push({
                 type: 0,
                 timestamp: new Date(),

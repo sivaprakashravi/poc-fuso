@@ -40,7 +40,7 @@
                                 <i [ngClass]="l['Status Representation']" *ngIf="l['Status Representation'] === 'Y'" class="icofont-warning"></i>
                                 <i [ngClass]="l['Status Representation']" *ngIf="l['Status Representation'] === 'R'" class="icofont-close-circled"></i>
                                 {{l['Order Status Description']}}</label>
-                            <div class="lt">Loss Type: {{l.text.Text}}</div>
+                            <div class="lt">{{l.text.Text}}</div>
                             <div class="btn"><button [ngClass]="l['Status Representation']">ETD Ticket</button></div>
                         </div>
                     </li>
